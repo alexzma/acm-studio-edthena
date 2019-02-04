@@ -19,18 +19,23 @@ public class CubeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-        float y = 0;
-        rb.AddForce(new Vector3(x - z, 0, 0) * speed * Time.deltaTime);
+        float x = 0;
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            x = -1;
+        }
+        if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        {
+            x = 1;
+        }
+        rb.AddForce(new Vector3(x, 0, 0) * speed * Time.deltaTime);
         if (!jumping)
         {
-            rb.AddTorque(new Vector3(0, 0, z-x) * sidespin * Time.deltaTime, ForceMode.Acceleration);
+            rb.AddTorque(new Vector3(0, 0, -x) * sidespin * Time.deltaTime, ForceMode.Acceleration);
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
             {
-                y = 1;
                 jumping = true;
-                rb.AddForce(new Vector3(0, y, 0) * jumpSpeed * Time.deltaTime, ForceMode.Impulse);
+                rb.AddForce(new Vector3(0, 1, 0) * jumpSpeed * Time.deltaTime, ForceMode.Impulse);
             }
         }
     }
