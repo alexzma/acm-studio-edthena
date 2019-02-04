@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: 1054180014}
   - component: {fileID: 1054180013}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Top Limit (Resets)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -795,11 +795,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054180012}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
   m_LocalPosition: {x: -1.2708776, y: 17.62, z: -1.9989734}
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2001293120}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!1 &1060596237
@@ -1223,6 +1223,7 @@ Transform:
   - {fileID: 634885324}
   - {fileID: 270721459}
   - {fileID: 2063656034}
+  - {fileID: 1054180017}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
