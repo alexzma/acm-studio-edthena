@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CubeController : MonoBehaviour
 {
-    public float speed = 100;
-    public float jumpSpeed = 250;
-    public float sidespin = 100;
+    public float speed = 200;
+    public float jumpSpeed = 500;
+    public float sidespin = 2500;
     public bool jumping = false;
     private Rigidbody rb;
 
