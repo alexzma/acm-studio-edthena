@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - New Platform
+  - Platform
+  - Target
+  - Projectile
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -39,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1583878077
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
