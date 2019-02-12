@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingProjectile : MonoBehaviour
+public class DestructibleProjectile : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -18,10 +18,13 @@ public class FallingProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player" || other.gameObject.tag == "Platform")
+        if (other.gameObject.tag == "Player")
         {
             Destroy(other.gameObject);
-            Destroy(this.gameObject);
+        }
+        if (other.gameObject.tag == "Platform")
+        {
+            Destroy(other.gameObject);
         }
     }
 }
