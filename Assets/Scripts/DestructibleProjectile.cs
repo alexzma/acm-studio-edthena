@@ -20,11 +20,15 @@ public class DestructibleProjectile : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
         if (other.gameObject.tag == "Platform")
         {
             Destroy(other.gameObject);
+        }
+        if (other.gameObject.tag == "Boundary")
+        {
+            Destroy(this.gameObject);
         }
     }
 }

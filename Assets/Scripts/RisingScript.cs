@@ -11,7 +11,6 @@ public class RisingScript : MonoBehaviour
     {
         transform = this.GetComponent<Transform>();
     }
-
     // Update is called once per frame
     void Update()
     {

@@ -10,6 +10,7 @@ TagManager:
   - Projectile
   - Boss
   - DestructibleProjectile
+  - Boundary
   layers:
   - Default
   - TransparentFX
