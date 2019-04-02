@@ -29,5 +29,9 @@ public class Projectile : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+        if(other.gameObject.tag == "DestructibleProjectile2")
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

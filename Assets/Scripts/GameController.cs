@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour
     private bool stage2 = false;
     public GameObject projectile;
     public int maxProjectiles = 21;
+    public GameObject sideProjectile;
+    public int maxSideProjectiles = 4;
     public GameObject target;
     // Start is called before the first frame update
     void Start()
@@ -85,7 +87,7 @@ public class GameController : MonoBehaviour
     {
         GameObject[] platforms = GameObject.FindGameObjectsWithTag("Platform");
         int numPlatforms = platforms.Length;
-        if(numPlatforms > maxPlatforms)
+        if (numPlatforms > maxPlatforms)
         {
             Destroy(platforms[0]);
         }
@@ -93,11 +95,21 @@ public class GameController : MonoBehaviour
         int numProjectiles = projectiles.Length;
         if (numProjectiles < maxProjectiles && stage2 && !won)
         {
-            float position = Random.value*40;
+            float position = Random.value * 40;
             Transform transform = GameObject.FindGameObjectWithTag("Boss").transform;
-            Vector3 projPos = new Vector3(position - 20, transform.position.y+10, 0);
+            Vector3 projPos = new Vector3(position - 20, transform.position.y + 10, 0);
             projectile.GetComponent<Transform>().transform.SetPositionAndRotation(projPos, new Quaternion(0, 0, 0, 0));
             Instantiate(projectile);
+        }
+        GameObject[] projectiles2 = GameObject.FindGameObjectsWithTag("DestructibleProjectile2");
+        numProjectiles = projectiles2.Length;
+        if(numProjectiles < maxSideProjectiles && stage3 && !won)
+        {
+            float position = Random.value * 20;
+            Transform transform = GameObject.FindGameObjectWithTag("Boss").transform;
+            Vector3 projPos = new Vector3(transform.position.x-15, position-10, 0);
+            sideProjectile.GetComponent<Transform>().transform.SetPositionAndRotation(projPos, new Quaternion(0, 0, 0, 0));
+            Instantiate(sideProjectile);
         }
     }
 }

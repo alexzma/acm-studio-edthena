@@ -26,7 +26,7 @@ public class DestructibleProjectile : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
-        if (other.gameObject.tag == "Boundary")
+        if (other.gameObject.tag == "Wall")
         {
             Destroy(this.gameObject);
         }
