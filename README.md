@@ -1,6 +1,6 @@
 
 # Player Mechanics
-Double jump creates platform beneath player
+Double jump creates platform beneath player\n
 Wall jumping
 Decreased sliding speed on walls
 
