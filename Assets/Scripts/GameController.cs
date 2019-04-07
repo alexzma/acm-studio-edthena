@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     public int maxPlatforms = 3;
     public LevelController level;
     private bool won = false;
+    private bool lost = false;
     private bool stage3 = false;
     private bool stage2 = false;
     public GameObject projectile;
@@ -14,13 +15,16 @@ public class GameController : MonoBehaviour
     public GameObject sideProjectile;
     public int maxSideProjectiles = 4;
     public GameObject target;
+    public GameObject winText;
+    public GameObject loseText;
     // Start is called before the first frame update
     void Start()
     {
         level.OnLevelLoaded += OnLoad;
         level.OnStageOneCompletion += OnStageTwo;
         level.OnStageTwoCompletion += OnStageThree;
-        level.OnStageThreeCompletion += OnWin;
+        level.OnLevelCompleted += OnWin;
+        level.OnLevelFailed += OnLose;
     }
 
     void OnLoad()
@@ -75,11 +79,66 @@ public class GameController : MonoBehaviour
         won = true;
         Destroy(GameObject.FindGameObjectWithTag("Boss"));
         Destroy(GameObject.FindGameObjectWithTag("Projectile"));
-        GameObject[] projectiles = GameObject.FindGameObjectsWithTag("DestructibleProjectile");
-        for (int i = 0; i < projectiles.Length; i++)
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("Wall");
+        for (int i = 0; i < objects.Length; i++)
         {
-            Destroy(projectiles[i]);
+            Destroy(objects[i]);
         }
+        objects = GameObject.FindGameObjectsWithTag("Platform");
+        for (int i = 0; i < objects.Length; i++)
+        {
+            Destroy(objects[i]);
+        }
+        objects = GameObject.FindGameObjectsWithTag("DestructibleProjectile");
+        for (int i = 0; i < objects.Length; i++)
+        {
+            Destroy(objects[i]);
+        }
+        objects = GameObject.FindGameObjectsWithTag("DestructibleProjectile2");
+        for (int i = 0; i < objects.Length; i++)
+        {
+            Destroy(objects[i]);
+        }
+        objects = GameObject.FindGameObjectsWithTag("Target");
+        for (int i = 0; i < objects.Length; i++)
+        {
+            Destroy(objects[i]);
+        }
+        winText.gameObject.SetActive(true);
+    }
+
+    void OnLose()
+    {
+        lost = true;
+        Destroy(GameObject.FindGameObjectWithTag("Boss"));
+        Destroy(GameObject.FindGameObjectWithTag("Projectile"));
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("Wall");
+        for (int i = 0; i < objects.Length; i++)
+        {
+            Destroy(objects[i]);
+        }
+        objects = GameObject.FindGameObjectsWithTag("Platform");
+        for (int i = 0; i < objects.Length; i++)
+        {
+            Destroy(objects[i]);
+        }
+        objects = GameObject.FindGameObjectsWithTag("DestructibleProjectile");
+        for (int i = 0; i < objects.Length; i++)
+        {
+            Destroy(objects[i]);
+        }
+        objects = GameObject.FindGameObjectsWithTag("DestructibleProjectile2");
+        for (int i = 0; i < objects.Length; i++)
+        {
+            Destroy(objects[i]);
+        }
+        objects = GameObject.FindGameObjectsWithTag("Target");
+        for (int i = 0; i < objects.Length; i++)
+        {
+            Destroy(objects[i]);
+        }
+        loseText.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -93,7 +152,7 @@ public class GameController : MonoBehaviour
         }
         GameObject[] projectiles = GameObject.FindGameObjectsWithTag("DestructibleProjectile");
         int numProjectiles = projectiles.Length;
-        if (numProjectiles < maxProjectiles && stage2 && !won)
+        if (numProjectiles < maxProjectiles && stage2 && !won && !lost)
         {
             float position = Random.value * 40;
             Transform transform = GameObject.FindGameObjectWithTag("Boss").transform;
@@ -103,11 +162,11 @@ public class GameController : MonoBehaviour
         }
         GameObject[] projectiles2 = GameObject.FindGameObjectsWithTag("DestructibleProjectile2");
         numProjectiles = projectiles2.Length;
-        if(numProjectiles < maxSideProjectiles && stage3 && !won)
+        if(numProjectiles < maxSideProjectiles && stage3 && !won && !lost)
         {
             float position = Random.value * 20;
             Transform transform = GameObject.FindGameObjectWithTag("Boss").transform;
-            Vector3 projPos = new Vector3(transform.position.x-15, position-10, 0);
+            Vector3 projPos = new Vector3(transform.position.x-15, transform.position.y + position-10, 0);
             sideProjectile.GetComponent<Transform>().transform.SetPositionAndRotation(projPos, new Quaternion(0, 0, 0, 0));
             Instantiate(sideProjectile);
         }

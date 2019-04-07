@@ -10,6 +10,8 @@ public class SpriteControllerv2 : MonoBehaviour
     //public Arm_Rotation arm; //Not used in platformer
     //public Camera m_sceneCamera;
 
+    public Animator animator;
+
     //Platform
     public GameObject platform;
 
@@ -123,7 +125,7 @@ public class SpriteControllerv2 : MonoBehaviour
             //Horizontal movement using a constant speed
             Vector2 targetVelocity = new Vector2(movement * 10f, m_rb2D.velocity.y);
             m_rb2D.velocity = Vector2.SmoothDamp(m_rb2D.velocity, targetVelocity, ref m_velocity, m_smoothSpeed);
-
+            animator.SetFloat("Speed", targetVelocity.x);
 
             if (movement > 0 && !m_faceRight && !m_onWall)
             {
@@ -147,7 +149,7 @@ public class SpriteControllerv2 : MonoBehaviour
             m_rb2D.velocity = new Vector2(m_rb2D.velocity.x, 0f);
             m_rb2D.AddForce(new Vector2(0f, m_jumpForce));
             GameObject newPlatform = Instantiate(platform, platform.GetComponent<Transform>());
-            newPlatform.transform.position = new Vector3(m_rb2D.position.x - 1, m_rb2D.position.y - 1, 0);
+            newPlatform.transform.position = new Vector3(m_rb2D.position.x, m_rb2D.position.y - 1, 0);
             m_doubleJump = false;
         }
         else if (!m_grounded && m_onWall && jump && m_wallJump)
@@ -170,7 +172,14 @@ public class SpriteControllerv2 : MonoBehaviour
             m_airControl = false;
             timer = Time.time + walljumpCD;
         }
-
+        if (!m_grounded)
+        {
+            animator.SetBool("Jumping", true);
+        }
+        else
+        {
+            animator.SetBool("Jumping", false);
+        }
     }
 
     //Flip the player sprite & axis

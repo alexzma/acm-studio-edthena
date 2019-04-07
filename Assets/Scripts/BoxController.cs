@@ -35,7 +35,7 @@ public class BoxController : MonoBehaviour
             {
                 //Create platform
                 GameObject newPlatform = Instantiate(platform, platform.GetComponent<Transform>());
-                newPlatform.transform.position = new Vector3(rb.position.x - 1, rb.position.y - 1, 0);
+                newPlatform.transform.position = new Vector3(rb.position.x -1, rb.position.y - 1, 0);
             }
         }
     }
