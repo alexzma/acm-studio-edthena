@@ -171,14 +171,7 @@ public class SpriteControllerv2 : MonoBehaviour
             m_airControl = false;
             timer = Time.time + walljumpCD;
         }
-        if (!m_grounded && animator.GetBool("Jumping") != true)
-        {
-            animator.SetBool("Jumping", true);
-        }
-        else
-        {
-            animator.SetBool("Jumping", false);
-        }
+        animator.SetFloat("Jumping", m_rb2D.velocity.y);
     }
 
     //Flip the player sprite & axis

@@ -2373,7 +2373,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -2413,7 +2413,7 @@ MonoBehaviour:
   animator: {fileID: 1838648970}
   platform: {fileID: 1684978949914798262, guid: f9afe39af047a4da091b2514c4f0944f,
     type: 3}
-  m_jumpForce: 400
+  m_jumpForce: 500
   m_smoothSpeed: 0.05
   m_slideSpeed: 1
   m_whatIsGround:
