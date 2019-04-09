@@ -15,16 +15,10 @@ public class TargetScript : MonoBehaviour
     {
         
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "PlayerBottom")
             Destroy(this.gameObject);
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.other.tag == "PlayerBottom")
-        {
-            Destroy(this.gameObject);
-        }
     }
 }
