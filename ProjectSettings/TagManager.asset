@@ -12,6 +12,7 @@ TagManager:
   - DestructibleProjectile
   - Wall
   - DestructibleProjectile2
+  - PlayerBottom
   layers:
   - Default
   - TransparentFX
