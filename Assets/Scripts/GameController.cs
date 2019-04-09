@@ -79,6 +79,7 @@ public class GameController : MonoBehaviour
         won = true;
         Destroy(GameObject.FindGameObjectWithTag("Boss"));
         Destroy(GameObject.FindGameObjectWithTag("Projectile"));
+        Destroy(GameObject.FindGameObjectWithTag("Projectile"));
         Destroy(GameObject.FindGameObjectWithTag("Player"));
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Wall");
         for (int i = 0; i < objects.Length; i++)
@@ -112,6 +113,7 @@ public class GameController : MonoBehaviour
     {
         lost = true;
         Destroy(GameObject.FindGameObjectWithTag("Boss"));
+        Destroy(GameObject.FindGameObjectWithTag("Projectile"));
         Destroy(GameObject.FindGameObjectWithTag("Projectile"));
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Wall");
         for (int i = 0; i < objects.Length; i++)
