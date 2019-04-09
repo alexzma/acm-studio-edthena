@@ -125,8 +125,7 @@ public class SpriteControllerv2 : MonoBehaviour
             //Horizontal movement using a constant speed
             Vector2 targetVelocity = new Vector2(movement * 10f, m_rb2D.velocity.y);
             m_rb2D.velocity = Vector2.SmoothDamp(m_rb2D.velocity, targetVelocity, ref m_velocity, m_smoothSpeed);
-            animator.SetFloat("Speed", targetVelocity.x);
-
+            animator.SetFloat("Speed", Mathf.Abs(targetVelocity.x));
             if (movement > 0 && !m_faceRight && !m_onWall)
             {
                 Flip();
@@ -172,7 +171,7 @@ public class SpriteControllerv2 : MonoBehaviour
             m_airControl = false;
             timer = Time.time + walljumpCD;
         }
-        if (!m_grounded)
+        if (!m_grounded && animator.GetBool("Jumping") != true)
         {
             animator.SetBool("Jumping", true);
         }
