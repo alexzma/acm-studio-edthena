@@ -17,6 +17,9 @@ public class GameController : MonoBehaviour
     public GameObject target;
     public GameObject winText;
     public GameObject loseText;
+    public AudioSource beginStage;
+    public AudioSource winStage;
+    public AudioSource loseStage;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,7 @@ public class GameController : MonoBehaviour
         level.OnStageTwoCompletion += OnStageThree;
         level.OnLevelCompleted += OnWin;
         level.OnLevelFailed += OnLose;
+        beginStage.Play();
     }
 
     void OnLoad()
@@ -35,6 +39,7 @@ public class GameController : MonoBehaviour
     void OnStageTwo()
     {
         stage2 = true;
+        beginStage.Play();
         Transform transform = GameObject.FindGameObjectWithTag("Boss").transform;
         Vector3 projPos = new Vector3(transform.position.x, transform.position.y, 0);
         target.GetComponent<Transform>().transform.SetPositionAndRotation(projPos, new Quaternion(0, 0, 0, 0));
@@ -59,6 +64,7 @@ public class GameController : MonoBehaviour
     void OnStageThree()
     {
         stage3 = true;
+        beginStage.Play();
         Transform transform = GameObject.FindGameObjectWithTag("Boss").transform;
         Vector3 projPos = new Vector3(transform.position.x - 10, transform.position.y, 0);
         target.GetComponent<Transform>().transform.SetPositionAndRotation(projPos, new Quaternion(0, 0, 0, 0));
@@ -107,6 +113,7 @@ public class GameController : MonoBehaviour
             Destroy(objects[i]);
         }
         winText.gameObject.SetActive(true);
+        winStage.gameObject.SetActive(true);
     }
 
     void OnLose()
@@ -141,6 +148,7 @@ public class GameController : MonoBehaviour
             Destroy(objects[i]);
         }
         loseText.gameObject.SetActive(true);
+        loseStage.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -158,7 +166,7 @@ public class GameController : MonoBehaviour
         {
             float position = Random.value * 40;
             Transform transform = GameObject.FindGameObjectWithTag("Boss").transform;
-            Vector3 projPos = new Vector3(position - 20, transform.position.y + 10, 0);
+            Vector3 projPos = new Vector3(position - 20, transform.position.y + 9, 0);
             projectile.GetComponent<Transform>().transform.SetPositionAndRotation(projPos, new Quaternion(0, 0, 0, 0));
             Instantiate(projectile);
         }

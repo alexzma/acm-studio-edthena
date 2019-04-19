@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DestructibleProjectile : MonoBehaviour
 {
+    public GameObject particles;
+    public AudioSource flame;
+    bool isPlaying = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +16,10 @@ public class DestructibleProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!(flame.isPlaying) && isPlaying)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -22,9 +28,15 @@ public class DestructibleProjectile : MonoBehaviour
         {
             other.gameObject.SetActive(false);
         }
-        if (other.gameObject.tag == "Platform")
+        if (other.gameObject.tag == "Platform" && !isPlaying)
         {
-            Destroy(other.gameObject);
+            Vector3 projPos = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y);
+            particles.GetComponent<Transform>().transform.SetPositionAndRotation(projPos, Quaternion.Euler(-90,0,0));
+            Instantiate(particles);
+            this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            flame.Play();
+            isPlaying = true;
         }
         if (other.gameObject.tag == "Wall")
         {

@@ -4,30 +4,17 @@ using UnityEngine;
 
 public class DontDestroyOnLoad : MonoBehaviour
 {
-
-    public static DontDestroyOnLoad Instance;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    static bool created = false;
     void Awake()
     {
-        if (Instance != null)
+        if (!created)
         {
-            GameObject.Destroy(Instance);
+            DontDestroyOnLoad(this.gameObject);
+            created = true;
         }
         else
         {
-            Instance = this;
-            DontDestroyOnLoad(this);
+            Destroy(this.gameObject);
         }
     }
 }
