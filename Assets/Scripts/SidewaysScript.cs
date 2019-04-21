@@ -15,6 +15,6 @@ public class SidewaysScript : MonoBehaviour
     void Update()
     {
         float x = transform.position.x + sidewaysSpeed;
-        transform.SetPositionAndRotation(new Vector3(x, transform.position.y, transform.position.z), new Quaternion(0, 0, 0, 0));
+        transform.SetPositionAndRotation(new Vector3(x, transform.position.y, transform.position.z), Quaternion.Euler(0,0,90));
     }
 }

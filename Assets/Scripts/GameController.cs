@@ -177,7 +177,7 @@ public class GameController : MonoBehaviour
             float position = Random.value * 20;
             Transform transform = GameObject.FindGameObjectWithTag("Boss").transform;
             Vector3 projPos = new Vector3(transform.position.x-15, transform.position.y + position-10, 0);
-            sideProjectile.GetComponent<Transform>().transform.SetPositionAndRotation(projPos, new Quaternion(0, 0, 0, 0));
+            sideProjectile.GetComponent<Transform>().transform.SetPositionAndRotation(projPos, Quaternion.Euler(0,0,90));
             Instantiate(sideProjectile);
         }
     }
