@@ -20,6 +20,9 @@ public class GameController : MonoBehaviour
     public AudioSource beginStage;
     public AudioSource winStage;
     public AudioSource loseStage;
+    public Animator cameraAnimator;
+    public Animator bossAnimator;
+    float time;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +31,9 @@ public class GameController : MonoBehaviour
         level.OnStageTwoCompletion += OnStageThree;
         level.OnLevelCompleted += OnWin;
         level.OnLevelFailed += OnLose;
-        beginStage.Play();
+        time = 0;
+        beginStage.PlayDelayed((float)1.5);
+        bossAnimator.SetBool("Attacking", true);
     }
 
     void OnLoad()
@@ -39,7 +44,6 @@ public class GameController : MonoBehaviour
     void OnStageTwo()
     {
         stage2 = true;
-        beginStage.Play();
         Transform transform = GameObject.FindGameObjectWithTag("Boss").transform;
         Vector3 projPos = new Vector3(transform.position.x, transform.position.y, 0);
         target.GetComponent<Transform>().transform.SetPositionAndRotation(projPos, new Quaternion(0, 0, 0, 0));
@@ -59,12 +63,14 @@ public class GameController : MonoBehaviour
         projPos = new Vector3(transform.position.x - 10, transform.position.y - 4, 0);
         target.GetComponent<Transform>().transform.SetPositionAndRotation(projPos, new Quaternion(0, 0, 0, 0));
         Instantiate(target);
+        time = 0;
+        beginStage.PlayDelayed((float)1.5);
+        bossAnimator.SetBool("Attacking", true);
     }
 
     void OnStageThree()
     {
         stage3 = true;
-        beginStage.Play();
         Transform transform = GameObject.FindGameObjectWithTag("Boss").transform;
         Vector3 projPos = new Vector3(transform.position.x - 10, transform.position.y, 0);
         target.GetComponent<Transform>().transform.SetPositionAndRotation(projPos, new Quaternion(0, 0, 0, 0));
@@ -78,6 +84,9 @@ public class GameController : MonoBehaviour
         projPos = new Vector3(transform.position.x, transform.position.y + 5, 0);
         target.GetComponent<Transform>().transform.SetPositionAndRotation(projPos, new Quaternion(0, 0, 0, 0));
         Instantiate(target);
+        time = 0;
+        beginStage.PlayDelayed((float)1.5);
+        bossAnimator.SetBool("Attacking", true);
     }
 
     void OnWin()
@@ -154,6 +163,20 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
+        if (time > 1.5)
+        {
+            cameraAnimator.SetBool("Shake", true);
+        }
+        if (time > 2)
+        {
+            bossAnimator.SetBool("Attacking", false);
+            cameraAnimator.SetBool("Shake", false);
+        }
+        if (time > 2.5)
+        {
+            beginStage.Stop();
+        }
         GameObject[] platforms = GameObject.FindGameObjectsWithTag("Platform");
         int numPlatforms = platforms.Length;
         if (numPlatforms > maxPlatforms)

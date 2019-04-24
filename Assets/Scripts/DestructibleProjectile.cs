@@ -30,15 +30,11 @@ public class DestructibleProjectile : MonoBehaviour
         }
         if (other.gameObject.tag == "Platform" && !isPlaying)
         {
-            if (this.gameObject.tag == "DestructibleProjectile2")
-            {
-                Destroy(this.gameObject);
-            }
             isPlaying = true;
             Vector3 projPos = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y);
             particles.GetComponent<Transform>().transform.SetPositionAndRotation(projPos, Quaternion.Euler(-90, 0, 0));
             Instantiate(particles);
-            this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            this.gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             flame.Play();
         }
