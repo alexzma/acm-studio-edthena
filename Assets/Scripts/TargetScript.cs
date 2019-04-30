@@ -21,6 +21,9 @@ public class TargetScript : MonoBehaviour
         if(time > 0.5 && hit)
         {
             bossAnimator.SetBool("Hit", false);
+        }
+        if(time > 1 && hit)
+        {
             Destroy(this.gameObject);
         }
     }
@@ -32,6 +35,7 @@ public class TargetScript : MonoBehaviour
             bossAnimator.SetBool("Hit", true);
             hit = true;
             time = 0;
+            gameObject.GetComponent<AudioSource>().Play();
             gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }

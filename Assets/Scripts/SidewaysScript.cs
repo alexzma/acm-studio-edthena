@@ -5,7 +5,7 @@ using UnityEngine;
 public class SidewaysScript : MonoBehaviour
 {
     Transform transform;
-    public float sidewaysSpeed = (float)0.01;
+    public float sidewaysSpeed = (float)0.04;
     // Start is called before the first frame update
     void Start()
     {

@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 5478723488938632552}
   - component: {fileID: 5478723488938632553}
   - component: {fileID: 5478723488938632554}
-  - component: {fileID: 5290081083671091205}
   - component: {fileID: 5328483545525962809}
-  m_Layer: 0
+  - component: {fileID: 5445412746542597513}
+  - component: {fileID: 4266120570549170054}
+  - component: {fileID: 9009631576144466937}
+  m_Layer: 8
   m_Name: Sideways Projectile
   m_TagString: DestructibleProjectile2
   m_Icon: {fileID: 0}
@@ -29,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5478723488938632558}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -15, y: 29.60902, z: 0}
+  m_LocalPosition: {x: -15, y: 47.084568, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -109,23 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37715b370b42547a2beaed79379bc071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sidewaysSpeed: 0.01
---- !u!70 &5290081083671091205
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5478723488938632558}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.7, y: 1}
-  m_Direction: 0
+  sidewaysSpeed: 0.04
 --- !u!82 &5328483545525962809
 AudioSource:
   m_ObjectHideFlags: 0
@@ -222,3 +208,65 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!61 &5445412746542597513
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5478723488938632558}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.45}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.6666667, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6666667, y: 0.1}
+  m_EdgeRadius: 0
+--- !u!68 &4266120570549170054
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5478723488938632558}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.0030002003, y: -0.4892121}
+  - {x: 0.30275735, y: 0.3821974}
+--- !u!68 &9009631576144466937
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5478723488938632558}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.012287201, y: -0.4892121}
+  - {x: -0.3036594, y: 0.3872939}

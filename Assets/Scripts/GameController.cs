@@ -92,7 +92,7 @@ public class GameController : MonoBehaviour
     void OnWin()
     {
         won = true;
-        Destroy(GameObject.FindGameObjectWithTag("Boss"));
+        GameObject.FindGameObjectWithTag("Boss").SetActive(false);
         Destroy(GameObject.FindGameObjectWithTag("Projectile"));
         Destroy(GameObject.FindGameObjectWithTag("Projectile"));
         Destroy(GameObject.FindGameObjectWithTag("Player"));
@@ -128,10 +128,15 @@ public class GameController : MonoBehaviour
     void OnLose()
     {
         lost = true;
-        Destroy(GameObject.FindGameObjectWithTag("Boss"));
+        GameObject.FindGameObjectWithTag("Boss").SetActive(false);
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("Projectile");
+        for (int i = 0; i < objects.Length; i++)
+        {
+            Destroy(objects[i]);
+        }
         Destroy(GameObject.FindGameObjectWithTag("Projectile"));
         Destroy(GameObject.FindGameObjectWithTag("Projectile"));
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("Wall");
+        objects = GameObject.FindGameObjectsWithTag("Wall");
         for (int i = 0; i < objects.Length; i++)
         {
             Destroy(objects[i]);
