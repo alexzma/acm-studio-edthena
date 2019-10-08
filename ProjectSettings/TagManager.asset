@@ -3,7 +3,29 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PlayerBottom
+  - Projectile
+  - Wall
+  - Boss
+  - Platform
+  - DestructibleProjectile
+  - Target
+  - DestructibleProjectile2
+  - Light
+  - Objective
+  - CameraTrigger
+  - CarDestruct
+  - Boundary
+  - Car
+  - Music
+  - HeartTrigger
+  - Level 1
+  - Level 2
+  - Level 3
+  - Level 4
+  - Level 5
+  - LevelUnlocker
   layers:
   - Default
   - TransparentFX
@@ -13,8 +35,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Ground
+  - Wall
   - 
   - 
   - 
@@ -38,6 +60,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3623430237
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
